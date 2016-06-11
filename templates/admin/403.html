@@ -1,0 +1,13 @@
+{% extends "admin/_base_empty.html" %}
+{% block content %}
+    <div class="col-md-4 col-md-offset-4">
+        <div class="login-panel panel panel-default">
+            <div class="panel-body" style="text-align: center;">
+                <h1>{{ _('Error: 403') }}</h1><br />
+                <p>{{ _('The server understood the request, but is refusing to fulfill it.') }}<p>
+                <br /><br />
+                <a href="{{url_for('admin.back') }}" class="btn btn-lg btn-success btn-block">{{ _('Please GTFO ❤‿❤') }}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

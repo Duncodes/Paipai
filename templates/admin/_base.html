@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FyPress - Dashboard">
+    <meta name="author" content="FyPress">
+
+    <title>{% block title %}{{title}} - {{options.name}}{% endblock %}</title>
+    <link rel=icon href=/static/admin/images/fypress_icon_64.png sizes="any" type="image/png">
+    {% block css %}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/1.0.8/css/sb-admin-2.min.css" rel="stylesheet">
+        
+        <link href="/static/admin/css/style.css" rel="stylesheet">
+    {% endblock %}
+    {% block js %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.5.2/metisMenu.min.js"></script>
+        <script src="/static/admin/js/main.js"></script>
+
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    {% endblock %}
+</head>
+    
+    
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url_for('admin.root')}}"><img src="/static/admin/images/fypress_40.png" style="margin-top: -10px;" alt="{{options.name}}" /></a>
+            </div>
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!--
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="badge alert-danger ">1</span> <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <strong>John Smith</strong>
+                                    <span class="pull-right text-muted">
+                                        <em>Yesterday</em>
+                                    </span>
+                                </div>
+                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>Read All Messages</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                       <span class="badge alert-danger ">4</span> <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i> 
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> {{g.user.nicename}} <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> {{ _('User Profile') }}</a>
+                        </li>
+                        <li class="divider"></li>
+                            <li><a href="/user/logout"><i class="fa fa-sign-out fa-fw"></i> {{ _('Logout') }}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+           <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        {% if g.user.has_level(1) %}
+                            <li>
+                                <a href="{{ url_for('admin.root') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> {{ _('Dashboard') }}</a>
+                            </li>           
+                        {% endif %}
+
+                        {% if g.user.has_level(3) %}
+                            <li>
+                                <a href="{{ url_for('admin.folders') }}"><i class="fa fa-folder-open-o fa-fw"></i> {{ _('Categories') }}</a>
+                            </li>           
+                        {% endif %}
+
+                        {% if g.user.has_level(1) %}
+                            <li >
+                                <a href="#" ><i class="fa fa fa-picture-o fa-fw" ></i> {{ _('Medias') }}<span class="fa arrow"></span></a>
+                                <ul aria- class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url_for('admin.medias') }}">{{ _('Library') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('admin.medias_upload') }}">{{ _('Add New (Upload)') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('admin.medias_web') }}">{{ _('Add New (Web)') }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+
+                        {% if g.user.has_level(1) %}
+                            <li class="active">
+                                <a href="#" aria-expanded="true"><i class="fa fa-file-text-o fa-fw"></i> {{_('Posts')}}<span class="fa arrow"></span></a>
+                                <ul aria-expanded="true" class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url_for('admin.posts') }}">{{_('All posts')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('admin.posts_add') }}">{{ _('Add New') }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if g.user.has_level(3) %}
+                            <li class="active">
+                                <a href="#" aria-expanded="true"><i class="fa fa-file-o fa-fw"></i> {{_('Pages')}}<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level" aria-expanded="true">
+                                    <li>
+                                        <a href="{{ url_for('admin.pages') }}">{{_('All Pages')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('admin.pages_add') }}">{{ _('Add New') }}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+
+                        {% if g.user.has_level(3) %}
+                            <li>
+                                <a href="{{ url_for('admin.comments') }}"><i class="fa fa-comment-o fa-fw"></i> {{_('Comments')}} <!--<span class="badge alert-danger pull-right">1</span>--></a>
+                            </li>
+                        {% endif %}
+
+                        <li >
+                            <a href="/admin/users"  ><i class="fa fa-user fa-fw"></i> {{ _('Users') }}<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                {% if g.user.has_level(4) %}
+                                    <li>
+                                        <a   href="{{url_for('admin.users')}}">{{ _('All Users') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url_for('admin.users_new')}}">{{ _('Add New') }}</a>
+                                    </li>
+                                {% endif %}
+                                <li>
+                                    <a href="{{url_for('admin.users_me')}}">{{ _('Your profile') }}</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        {% if g.user.has_level(4) %}
+                            <li>
+                                <a href="#"><i class="fa fa-cogs fa-fw"></i> {{_('Settings')}}<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url_for('admin.settings_general') }}">{{_('General')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('admin.settings_design') }}">{{_('Design')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('admin.settings_social') }}">{{_('Social &amp; Services')}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('admin.settings_reading') }}">{{_('Reading')}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <br />
+                    <div class="flash">
+                        {% for message in messages %}
+                           {{ message }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+                <div class="row">
+                    {% block content %}{% endblock %}
+
+                    {% if debug %}
+                        <div class="clearfix"></div>
+                        <hr />
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong>[DEBUG]</strong> <em>{{queries.n}}</em> queries in <em> {{queries.t}} </em> seconds
+                                </div>
+                                <div class="panel-body" style="font-size: 12px">
+                                    {% for query in queries.d %}
+                                        {{query.t}} :<pre style="font-size: 12px">{{query.q}}</pre>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+               </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+    </div>
+    <!-- /#wrapper -->
+    {% block footer %}{% endblock %}
+</html>

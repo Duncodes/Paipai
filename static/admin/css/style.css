@@ -1,0 +1,283 @@
+/* 
+    Global
+*/
+.flash {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    padding-left: 20px;
+    border-left: 10px solid #46b450;
+}
+.active-filter {
+    font-weight: bold;
+    color: #000;
+}
+.user-avatar {
+    float: left;
+    margin-right: 5px;
+}
+.ldanger {
+    color: darkred;
+}
+.ldanger:hover {
+    color: red;
+    text-decoration: none;
+}
+.lok {
+    color: darkgreen;
+
+}
+.lok:hover {
+    color: green;
+    text-decoration: none;
+}
+.panel-logo {
+    margin-top: 20px;
+    text-align:center;
+}
+abbr {
+    border-width: 0 !important;
+}
+.popover {
+    width: 200px;
+    overflow: hidden
+}
+/* 
+    Empty
+*/ 
+#empty-wrapper {
+    padding: 30px;
+    padding-top: 0;
+    background: #fff;
+}
+
+/*
+    Spin
+*/
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+.spin-it {
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 1000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 1000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 1000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+/* 
+    Media
+*/
+.thumbnail-table {
+    padding: 2px;
+    border: 1px solid #cecece;
+    width: 40px; 
+    margin-right: 10px;
+}
+.fp_media_container {
+
+}
+
+.fp_media:hover {
+    text-decoration: none;
+}
+.modal-dialog {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 0;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+.img-black {
+    color: #fff;
+    font-weight: bold;
+    font-size: 11px;
+} 
+.img-black:hover {
+    text-decoration: none;
+}
+.img-black {
+    width: 100%;
+    height: 150px;
+    background: rgba(0,0,0,0.95);
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.mediabox {
+    overflow: hidden;
+    height: 210px;
+}
+.media-item a:hover {
+    text-decoration: none;
+}
+.media-icon {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 150px;
+    font-size: 100px;
+    text-align: center;
+    line-height: 150px;
+    color: rgba(255,255,255,0.2);
+}
+.vcenter {
+    margin: 0 auto;
+}
+#fp_media_loader {
+    text-align: center;
+}
+.fat-icon {
+    font-size: 50px;
+    text-align: center;
+    line-height: 150px;
+}
+.media-item {
+    margin-right: 8px;
+}
+.medias-box {
+    padding: 10px;
+}
+.media-item-footer {
+    background: #000;
+    color: #fff;
+    padding: 3px;
+    text-align: center;
+    font-size: small;
+}
+.media-selected {
+    border-color: green !important;
+}
+.fp_media {
+    text-decoration: none;
+    position: relative;
+    z-index: 99999;
+    border-width: 5px;
+
+}
+/*
+    RTE
+*/
+.fp_rte {
+    margin-bottom: 5px;
+}
+
+/*
+    Titles
+*/
+h1 { font-size: 24px; }
+h2 { font-size: 20px; }
+h3 { font-size: 16px; font-weight: bold; }
+h4 { font-size: 13px; font-weight: bold }
+
+/*
+    SEO Preview
+*/
+.seo-preview {
+    border: 1px solid #aaa;
+    background: #fff;
+    padding: 10px;
+}
+    .seo-preview span {
+        display: block;
+    }
+    .seo-preview-title {
+        color: #1E0FBE;
+        font-family: Arial;
+        font-size: 18px;
+    }
+    .seo-preview-url {
+        font-family: Arial;
+        font-size: 16px;
+        color:  #006621;
+    }
+    .seo-preview-desc {
+        font-family: Arial;
+        font-size: 13px;
+        color: #777777;
+    }
+
+/* Sortable */
+.sortable {
+    margin: 0;
+    padding: 0;
+}
+.sortable li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+     margin-top: 5px;
+}
+.nav-drag {
+    cursor: move;
+    margin: 0;
+}
+.sortable .panel-body {
+    padding: 0;
+}
+.sortable .table {
+    border: 0;
+    margin: 0;
+}
+.mjs-nestedSortable-error {
+    background: #fbe3e4;
+    border-color: transparent;
+}
+li.mjs-nestedSortable-collapsed.mjs-nestedSortable-hovering div {
+    border-color: #999;
+}
+
+.disclose, .expandEditor {
+    cursor: pointer;
+    width: 20px;
+    display: none;
+}
+
+.sortable li.mjs-nestedSortable-collapsed > ol {
+    display: none;
+}
+
+.sortable li.mjs-nestedSortable-branch > div > .disclose {
+    display: inline-block;
+}
+
+.sortable span.ui-icon {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+.placeholder {
+    outline: 1px dashed #4183C4;
+}
+.deleteMenu, .editMenu {
+    float: right;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.root span {
+    display: none;
+}

@@ -1,0 +1,41 @@
+{% if request.args.get('parent') %}
+  {% extends "admin/_base_empty.html" %}
+{% else %}
+  {% extends "admin/_base.html" %}
+{% endif %}
+
+{% block content %}
+    {% from 'macros/form.html' import render_form %}
+    <div class="col-lg-12">
+        <h1 class="page-header"><i class="fa fa-picture-o fa-fw"></i> {{ _('Medias') }}</h1>
+
+        <ul class="nav nav-tabs">
+          <li role="presentation"><a href="{{url_for('admin.medias_upload', filter=request.args.get('filter'), parent=request.args.get('parent'))}}">{{ _('Add New (Upload)') }}</a></li>
+          {% if request.args.get('filter') != 'image' %}
+            <li role="presentation"><a href="{{url_for('admin.medias_web', filter=request.args.get('filter'),  parent=request.args.get('parent'))}}">{{ _('Add New (Web)') }}</a></li>
+          {% endif %}
+          <li role="presentation" class="active"><a href="{{url_for('admin.medias', filter=request.args.get('filter'),  parent=request.args.get('parent'))}}">{{ _('Library') }}</a></li>
+        </ul>
+
+        <div class="medias-box">
+            <div class="row">
+            {{pages|safe}}
+            {% for media in medias %}
+              <div class="col-md-2 col-xs-4 mediabox" style="padding-left: 0px;">
+                <a href="#" class="thumbnail fp_media" data-type="{{media.type}}" id="media_{{media.id}}">
+                  <i class="fa {{media.icon}} media-icon"></i>
+                  {% if media.urlify('thumbnail-s') %}
+                    <img src="{{media.urlify('thumbnail-s')}}"  alt="{{media.name}}" />
+                  {% else %}
+                    <div class="img-black"><div class="vcenter">{{media.name}}</div></div>
+                  {% endif %}
+                  <div class="media-item-footer"><i class="fa {{media.icon}}"></i> {% if media.data.provider %}{{media.data.provider}}{% else %}{{_('Upload')}}{% endif %}</div>
+                </a>
+              </div>
+            {% endfor %}
+            <div class="clearfix"></div>
+            {{pages|safe}}
+        </div>   
+    </div>
+
+{% endblock %}

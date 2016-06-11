@@ -1,0 +1,112 @@
+{% extends "admin/_base.html" %}
+
+{% block js %}
+    {{ super() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-confirmation/1.0.5/bootstrap-confirmation.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="col-lg-12">
+    <h1 class="page-header">
+        {% if page %}
+            <i class="fa fa-file-o  fa-fw"></i> {{ _('Pages') }} <a href="{{ url_for(urls~'_add') }}" class="btn btn-default ">{{ _('Add New')}}</a></h1>
+        {% else %}
+            <i class="fa fa-file-text-o  fa-fw"></i> {{ _('Posts') }} <a href="{{ url_for(urls~'_add') }}" class="btn btn-default ">{{ _('Add New')}}</a></h1>
+        {% endif %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {{ _('Filter') }}: 
+            <a {% if not filter %} class="active-filter"{% endif %} href="{{ url_for(urls)}}">All</a> ({{numbers['total']}}) | 
+            <a {% if filter == 'published' %} class="active-filter"{% endif %} href="{{ url_for(urls, filter='published')}}">Published</a> ({{numbers['published']}}) | 
+            <a {% if filter == 'draft' %} class="active-filter"{% endif %} href="{{ url_for(urls, filter='draft')}}">Drafts</a> ({{numbers['draft']}}) |
+            <a {% if filter == 'trash' %} class="active-filter"{% endif %} href="{{ url_for(urls, filter='trash')}}">Trash</a> ({{numbers['trash']}})
+        </div>
+        <div class="panel-body">
+            {{pages|safe}}
+            <div class="dataTable_wrapper table-responsive"> 
+                <table class="table table-striped  table-hover" id="dataTables-posts">
+                    <thead>
+                        <tr>
+                            <th>{{ _('ID') }}</th>
+                            <th>{{ _('Title') }}</th>
+                            <th>{{ _('Category') }}</th>
+                            <th>{{ _('Comments') }}</th>
+                            <th>{{ _('Date') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in posts %}
+                            <tr class="odd" >
+                                <td class="col-md-1">
+                                    <!--<div class="col-md-6">
+                                        <input type="checkbox" value="{{post.id}}" name="post[]">
+                                    </div>
+                                    <div class="col-md-6">
+                                        
+                                    </div>-->
+                                    #{{post.id}}
+                                </td>
+                                <td class="col-md-6">
+                                    {% if post.image.id %}
+                                        <img  class="pull-left thumbnail-table" src="{{post.image.urlify('thumbnail-s')}}" alt="{{post.title}}" /> 
+                                    {% else %}
+                                        <img class="pull-left thumbnail-table" src="/static/admin/images/empty.png" /> 
+                                    {% endif %}
+
+                                    {% if post.status != 'trash' %}<a href="{{url_for(urls~'_add', edit=post.id) }}">{% else %}<span class="text-muted">{% endif %}
+                                            
+                                        {{post.title}}
+                                    {% if post.status != 'trash' %}</a>{% else %}</span>{% endif %}
+                                    <br />
+                                    <small class="text-muted">
+                                        {% if post.status != 'trash' %}
+                                            <a href="{{url_for('admin.posts_add', edit=post.id) }}">{{_('Edit')}}</a> | 
+                                            {% if post.status == 'draft' %}
+                                                <a  href="{{ url_for('admin.posts_move', id=post.id, status='published') }}">{{_('Publish')}}</a> | 
+                                            {% elif post.status == 'published' %}
+                                                <a  href="{{ url_for('admin.posts_move', id=post.id, status='draft') }}">{{_('Unpublish')}}</a> | 
+                                            {% endif %}
+                                            <a class="ldanger" href="{{ url_for('admin.posts_move', id=post.id, status='trash') }}">{{_('Delete')}}</a> | 
+                                            <a href="">{{_('Preview')}}</a> |
+                                            <em>
+                                                {{options.url}}{% if post.slug == 'index' %}{{post.folder.guid}}{% if post.folder.id != 1%}/{% endif %}{% else %}{{post.guid}}.html{% endif %}
+                                            </em>
+                                        {% else %}
+                                            <a  href="{{ url_for('admin.posts_move', id=post.id, status='draft') }}">{{_('Restore')}}</a> | 
+                                            <a  href="{{ url_for('admin.posts_move', id=post.id, status='published') }}">{{_('Publish')}}</a> |
+                                            <a class="ldanger" data-toggle="confirmation"  data-placement="right" data-href="{{ url_for('admin.posts_delete', id=post.id) }}"  href="#">{{_('Delete Permanently')}}</a> 
+                                        {% endif %}
+                                    </small>
+                                </td>
+                                <td class="col-md-2">
+                                    <small>
+                                            {% if post.slug == 'index' %}<span class="label label-success">INDEX</span>{% else %}
+                                                {% if post.type == 'page' %}
+                                                    <span class="label label-info">PAGE</span>
+                                                {% else %}
+                                                    <span class="label label-info">POST</span>
+                                                {% endif %}
+                                            {% endif %}
+                                            <i class="fa fa-folder-open-o fa-fw"></i> /{{post.folder.guid}} 
+                                    </small>
+                                    <br />
+                                    <strong>{{post.folder.name}}</strong>
+                                </td>
+                                <td class="col-md-1" style="vertical-align: middle"><i class="fa fa-comment" aria-hidden="true"></i> {{post.comment_count}}</td>
+                                <td class="col-md-12" style="vertical-align: middle"><abbr title="{{post.modified}}">{{post.modified}}</abbr></td>
+                            </tr>
+                        {% endfor %}
+                </tbody>
+                </table>
+            </div>
+            {{pages|safe}}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+    <script>
+        {% include 'admin/js/posts.js' %}
+    </script>    
+{% endblock %}

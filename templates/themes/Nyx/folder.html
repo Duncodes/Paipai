@@ -1,0 +1,55 @@
+{% extends "themes/Nyx/_base.html" %}
+
+{% block content %}
+    {% if this.id != 1 %}
+        {% if not this.index %}
+            <h1>{{this.name}}</h1>
+            <p>{{this.content}}</p>
+            <div class="clearfix"></div>
+            <hr />
+        {% else %}
+            {% include "themes/Nyx/includes/page.html" %}
+            <hr />
+        {% endif %}
+    {% endif %}
+
+    {% if this.posts.items %}
+        {% if this.index %}
+            <h2>Latest {{this.name}} posts</h2>
+        {% endif %}
+    {% endif %}
+
+    {% for item in this.posts.items %}
+        {% include "themes/Nyx/includes/post-summary.html" %}
+    {% endfor %}
+    {{this.posts.links}}
+{% endblock %}
+
+{% block sidebar %}
+    {% if this.pages|length > 1 %}
+        <div class="row widget">
+            <h3>{{this.name}}</h3>
+            {{this.content|safe}}
+            <ul class="menu vertical">
+                <li class="active"><a href="/{{this.guid}}/">{{this.name}}</a></li>
+                {% for page in this.pages %}
+                    {% if page.slug != 'index' %}
+                        <li><a href="/{{page.guid}}.html">{{page.title}}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <hr />
+    {% endif %}
+
+    {% with folder = this.id %}
+        {% include 'themes/Nyx/widgets/last-post-by-folder.html' %}
+    {% endwith %}
+{% endblock %}
+
+
+
+{% block scripts %}
+    {{ super() }}
+    <script src="/public/js/prism.js"></script>
+{% endblock %}
