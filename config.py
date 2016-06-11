@@ -33,7 +33,7 @@ class Config(object):
     UPLOAD_DIRECTORY_URL = '/files/'
  
     ### DEBUG ###
-    DEBUG = True
+    DEBUG = False
     CACHE = True
 
     ### CACHE ###
