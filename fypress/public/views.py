@@ -39,7 +39,7 @@ def before_request():
         g.user = None
         if 'user_id' in session:
             g.user = User.query.get(session['user_id'])
-        
+
 
     if len(options) == 0:
         from fypress.admin import Option
@@ -107,17 +107,17 @@ def template():
             index = Post.query.filter(folder_id=item.folder_id, slug='index', status='published', type='page').one()
             if index and index.image_id != 0:
                 return index.image
-        
-        return False    
+
+        return False
 
     def seo(item=False):
         pass
 
     return dict(
-        nav=nav, 
-        get_posts=get_posts, 
+        nav=nav,
+        get_posts=get_posts,
         show_sidebar=True,
-        show_breadcrumb=True, 
+        show_breadcrumb=True,
         show_footer=True,
         breadcrumb=breadcrumb,
         is_home=is_home,
@@ -157,7 +157,7 @@ def is_post(slug):
 
         post.views += 1
         Post.query.update(post)
-        
+
         if post.type == 'post':
             post.is_post = True
             return render_template(get_template('post.html', config), this=post, show_sidebar=False)
@@ -167,7 +167,7 @@ def is_post(slug):
             return render_template(get_template('page.html', config), this=post)
     else:
         return is_404()
-    
+
 @public.route('/<path:slug>/')
 @cached(pretty=True)
 def is_folder(slug):
@@ -212,7 +212,7 @@ def feed_folder(folder):
 
             for post in posts:
                 feed.add(
-                    post.title, 
+                    post.title,
                     post.content,
                     content_type='html',
                     author=post.user.nicename,
@@ -246,7 +246,7 @@ def feed():
     posts = Post.query.filter(status='published', type='post').order_by('created').limit(20, 0, array=True)
     for post in posts:
         feed.add(
-            post.title, 
+            post.title,
             post.content,
             content_type='html',
             author=post.user.nicename,
@@ -266,7 +266,7 @@ def feed():
 def sitemap_xls():
     response = make_response(render_template('front/_sitemap.xls'))
     response.headers["Content-Type"] = 'application/xml'
-    return response 
+    return response
 
 @public.route('/sitemap.xml')
 @cached()
@@ -303,4 +303,4 @@ def sitemap():
 
     response = make_response(render_template('front/_sitemap.xml', pages=pages))
     response.headers["Content-Type"] = 'application/xml'
-    return response 
+    return response

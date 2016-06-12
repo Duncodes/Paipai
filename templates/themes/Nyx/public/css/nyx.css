@@ -10,7 +10,8 @@ h4 { font-size: 1rem;}
 
 /* Global */
 body {
-    background: #2c223f;
+    /*background: #2c223f;*/
+    background: pink;
 }
 .callout {
     border: 0;
@@ -104,9 +105,10 @@ a:focus, a:hover {
 /* Header */
 header {
     background: #2c223f;
+    background: pink;
 }
     header h1 a, header h1 a:hover, header .h1 a, header .h1 a:hover {
-        color: #fff;   
+        color: #fff;
     }
     header .h1 {
         color: #fff;
@@ -132,6 +134,7 @@ header {
 /* Topbar */
 .top-bar, .top-bar ul {
     background-color: #1e172a;
+    background-color: pink;
 }
 .top-bar a {
     color: #fff;
@@ -163,6 +166,7 @@ header {
 /* Footer */
 #footer {
     background: #2c223f;
+    background: pink;
     color: #fff;
     padding-top: 1rem;
     padding-bottom: 1rem;

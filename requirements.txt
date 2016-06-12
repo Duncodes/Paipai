@@ -1,4 +1,4 @@
-Babel==2.3.4
+Babel
 BeautifulSoup==3.2.1
 beautifulsoup4==4.4.1
 coverage==4.1

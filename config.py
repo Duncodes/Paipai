@@ -31,14 +31,14 @@ class Config(object):
     UPLOAD_DIRECTORY     = os.path.join(MEDIA_ROOT, 'uploads')
     CHUNKS_DIRECTORY     = os.path.join(MEDIA_ROOT, 'chunks')
     UPLOAD_DIRECTORY_URL = '/files/'
- 
+
     ### DEBUG ###
-    DEBUG = False
+    DEBUG = True
     CACHE = True
 
     ### CACHE ###
     CACHE_TYPE = 'memcached' # redis, memcached, file
-    CACHE_SERV = '127.0.0.1' # 127.0.0.1, 127.0.0.1, cache/ 
+    CACHE_SERV = '127.0.0.1' # 127.0.0.1, 127.0.0.1, cache/
 
     ### URL ###
     URL        = 'http://127.0.0.1:5001/'
