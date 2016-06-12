@@ -1,0 +1,16 @@
+{
+  "name": "Paipai",
+  "description": "A blog press",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
